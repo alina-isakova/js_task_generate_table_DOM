@@ -370,7 +370,12 @@ for (const person of people) {
   const newRow = document.createElement('tr');
 
   for (const key in row) {
-    newRow.innerHTML += `<th>${row[key]}</th>`;
+    const newCell = document.createElement('th');
+
+    if (row.hasOwnProperty(key)) {
+      newCell.textContent = row[key];
+    }
+    newRow.append(newCell);
   }
 
   tbody.append(newRow);
